@@ -11,12 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130209000916) do
+ActiveRecord::Schema.define(:version => 20130209004149) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "wishes", :force => true do |t|
+    t.string   "title"
+    t.boolean  "granted"
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "wishes", ["category_id"], :name => "index_wishes_on_category_id"
 
 end
